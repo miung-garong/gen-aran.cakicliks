@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Social Media Name Generator By VINS</title>
+
+<meta name="description"
+content="OJOK MALES GARAP">
+
+<style>
+:root{
+    --bg:#070707;
+    --panel:#101010;
+    --panel2:#151515;
+    --border:#292929;
+    --red:#e50909;
+    --red2:#ff2424;
+    --text:#f3f3f3;
+    --muted:#777;
+    --green:#27d980;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 50% -10%,#420000 0%,transparent 38%),
+        #070707;
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.container{
+    width:min(1100px,94%);
+    margin:auto;
+    padding:30px 0 20px;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    text-align:center;
+    margin-bottom:28px;
+}
+
+.logo{
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:7px;
+    color:#fff;
+    text-shadow:0 0 30px #ff000033;
+}
+
+.logo span{
+    color:var(--red2);
+}
+
+.subtitle{
+    margin-top:8px;
+    font-size:11px;
+    letter-spacing:4px;
+    color:#999;
+}
+
+.description{
+    margin-top:10px;
+    color:#555;
+    font-size:13px;
+	font-weight:700;
+}
+
+/* ================= PANEL ================= */
+
+.panel{
+    background:linear-gradient(145deg,#121212,#0b0b0b);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:21px;
+    box-shadow:0 18px 45px #0009;
+}
+
+.section-title{
+    color:var(--red2);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:16px;
+}
+
+/* ================= CONTROLS ================= */
+
+.controls{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.field label{
+    display:block;
+    margin-bottom:8px;
+    color:#aaa;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:.5px;
+}
+
+select,
+input[type="number"]{
+    width:100%;
+    height:43px;
+    background:#090909;
+    color:#eee;
+    border:1px solid #303030;
+    border-radius:7px;
+    padding:0 12px;
+    outline:none;
+}
+
+select:focus,
+input[type="number"]:focus{
+    border-color:var(--red2);
+    box-shadow:0 0 0 2px #ff000015;
+}
+
+select option{
+    background:#111;
+    color:#fff;
+}
+
+/* ================= MULTI STYLE ================= */
+
+.style-box{
+    background:#090909;
+    border:1px solid #303030;
+    border-radius:8px;
+    padding:11px;
+    max-height:220px;
+    overflow:auto;
+}
+
+.style-option{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    min-height:34px;
+    padding:5px 7px;
+    border-radius:5px;
+    color:#aaa;
+    font-size:12px;
+    cursor:pointer;
+    transition:.15s;
+}
+
+.style-option:hover{
+    background:#161616;
+    color:#fff;
+}
+
+.style-option input{
+    appearance:none;
+    width:15px;
+    height:15px;
+    min-width:15px;
+    border:1px solid #555;
+    border-radius:3px;
+    background:#090909;
+    position:relative;
+    cursor:pointer;
+}
+
+.style-option input:checked{
+    border-color:var(--red2);
+    background:var(--red);
+}
+
+.style-option input:checked::after{
+    content:"✓";
+    position:absolute;
+    left:2px;
+    top:-2px;
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.style-option code{
+    color:#ddd;
+    font-family:Consolas,monospace;
+    font-size:11px;
+}
+
+.style-option input:checked + code{
+    color:#fff;
+}
+
+/* ================= ACTIONS ================= */
+
+.actions{
+    display:flex;
+    gap:9px;
+    margin-top:20px;
+}
+
+.btn{
+    height:44px;
+    border-radius:7px;
+    padding:0 16px;
+    border:1px solid #303030;
+    background:#181818;
+    color:#ddd;
+    font-weight:bold;
+    transition:.15s;
+}
+
+.btn:hover{
+    border-color:#555;
+    color:#fff;
+}
+
+.btn:active{
+    transform:scale(.97);
+}
+
+.btn-primary{
+    flex:1;
+    background:linear-gradient(120deg,#ef1111,#a50000);
+    border-color:#f22;
+    color:#fff;
+    letter-spacing:1px;
+}
+
+.btn-primary:hover{
+    background:#ff1717;
+    box-shadow:0 0 25px #ff000033;
+}
+
+/* ================= RESULTS ================= */
+
+.results-section{
+    margin-top:22px;
+}
+
+.results-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:13px;
+}
+
+.results-header .section-title{
+    margin:0;
+}
+
+.counter{
+    color:#666;
+    font-size:11px;
+}
+
+.counter strong{
+    color:var(--red2);
+    font-size:16px;
+}
+
+.result-list{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+}
+
+.result-card{
+    background:#090909;
+    border:1px solid #292929;
+    border-radius:8px;
+    padding:14px;
+    animation:appear .2s ease both;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(5px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.result-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.result-number{
+    color:#555;
+    font-size:10px;
+    margin-bottom:8px;
+}
+
+.copy-one{
+    border:1px solid #303030;
+    background:#151515;
+    color:#aaa;
+    border-radius:5px;
+    padding:6px 9px;
+    font-size:10px;
+}
+
+.copy-one:hover{
+    color:#fff;
+    border-color:var(--red);
+}
+
+.result-label{
+    color:#555;
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:1.4px;
+    margin-bottom:4px;
+}
+
+.result-name{
+    color:#eee;
+    font-size:14px;
+    font-weight:bold;
+    line-height:1.5;
+    overflow-wrap:anywhere;
+}
+
+.result-username{
+    color:var(--red2);
+    font-family:Consolas,monospace;
+    font-size:13px;
+    line-height:1.5;
+    overflow-wrap:anywhere;
+}
+
+.result-block + .result-block{
+    margin-top:12px;
+}
+
+.empty{
+    grid-column:1/-1;
+    padding:48px 15px;
+    text-align:center;
+    border:1px dashed #303030;
+    border-radius:8px;
+    color:#555;
+}
+
+.empty strong{
+    display:block;
+    color:#777;
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.status{
+    min-height:17px;
+    margin-top:12px;
+    color:var(--green);
+    font-size:11px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:28px 0 5px;
+    color:#444;
+    font-size:12px;
+    letter-spacing:1.5px;
+}
+
+footer span{
+    color:var(--red);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:650px){
+
+    .container{
+        width:93%;
+        padding-top:23px;
+    }
+
+    .logo{
+        font-size:29px;
+        letter-spacing:5px;
+    }
+
+    .subtitle{
+        font-size:9px;
+        letter-spacing:2px;
+    }
+
+    .controls{
+        grid-template-columns:1fr;
+    }
+
+    .panel{
+        padding:15px;
+    }
+
+    .result-list{
+        grid-template-columns:1fr;
+    }
+
+    .actions{
+        flex-wrap:wrap;
+    }
+
+    .btn{
+        flex:1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <div class="logo">MAS ICLIK<span>.</span></div>
+    <div class="subtitle">SOCIAL MEDIA NAME GENERATOR</div>
+    <div class="description">
+        OJOK MALES GARAP
+    </div>
+</header>
+
+<!-- ================= GENERATOR ================= -->
+
+<section class="panel">
+
+    <div class="section-title">
+        🟢 GENERATOR SETTINGS
+    </div>
+
+    <div class="controls">
+
+        <!-- MODE -->
+
+        <div class="field">
+
+            <label>OUTPUT MODE</label>
+
+            <select id="mode">
+
+                <option value="both">
+                    Full Name + Username
+                </option>
+
+                <option value="name">
+                    Full Name Only
+                </option>
+
+                <option value="username">
+                    Username Only
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- COUNTRY -->
+
+        <div class="field">
+
+            <label>COUNTRY</label>
+
+            <select id="country">
+
+                <option value="USA">USA</option>
+                <option value="FR">FR — France</option>
+                <option value="DE">DE — Germany</option>
+                <option value="JP">JP — Japan</option>
+                <option value="IT">IT — Italy</option>
+                <option value="ES">ES — Spain</option>
+                <option value="FI">FI — Finland</option>
+                <option value="SE">SE — Sweden</option>
+
+            </select>
+
+        </div>
+
+        <!-- NAME STYLE -->
+
+        <div class="field">
+
+            <label>
+                FULL NAME STYLE
+                <span style="color:#666">(MULTI SELECT)</span>
+            </label>
+
+            <div class="style-box">
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="name-style"
+                        value="first_last"
+                        checked
+                    >
+                    <code>First Last</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="name-style"
+                        value="first_middle_last"
+                    >
+                    <code>First Middle Last</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="name-style"
+                        value="first_last_last"
+                    >
+                    <code>First Last Last</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="name-style"
+                        value="first_middle_last_last"
+                    >
+                    <code>First Middle Last Last</code>
+                </label>
+
+            </div>
+
+        </div>
+
+        <!-- USERNAME STYLE -->
+
+        <div class="field">
+
+            <label>
+                USERNAME STYLE
+                <span style="color:#666">(MULTI SELECT)</span>
+            </label>
+
+            <div class="style-box">
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="firstlast_num"
+                        checked
+                    >
+                    <code>namadepan namabelakang + angka</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="first_lastnum"
+                    >
+                    <code>nama_namaangka</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="first_dot_lastnum"
+                    >
+                    <code>nama.namaangka</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="first_last_num"
+                    >
+                    <code>nama_nama_angka</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="first_dot_last_num"
+                    >
+                    <code>nama.nama_angka</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="num_first_last"
+                    >
+                    <code>angka_nama_nama</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="firstnum_last"
+                    >
+                    <code>namaangka_nama</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="first_lastnum2"
+                    >
+                    <code>nama_namaangka</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="first_last_dot_num"
+                    >
+                    <code>nama_nama.angka</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="first_dot_last_dot_num"
+                    >
+                    <code>nama.nama.angka</code>
+                </label>
+
+                <label class="style-option">
+                    <input
+                        type="checkbox"
+                        class="username-style"
+                        value="num_first_last_num"
+                    >
+                    <code>angka_nama_nama_angka</code>
+                </label>
+
+            </div>
+
+        </div>
+
+        <!-- AMOUNT -->
+
+        <div class="field">
+
+            <label>NUMBER OF RESULTS</label>
+
+            <input
+                id="amount"
+                type="number"
+                min="1"
+                max="100"
+                value="20"
+            >
+
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <button
+            class="btn btn-primary"
+            id="generate"
+        >
+            GENERATE
+        </button>
+
+        <button
+            class="btn"
+            id="copyAll"
+        >
+            COPY ALL
+        </button>
+
+        <button
+            class="btn"
+            id="clear"
+        >
+            CLEAR
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ================= RESULTS ================= -->
+
+<section class="results-section">
+
+    <div class="results-header">
+
+        <div class="section-title">
+            🟢 RESULTS
+        </div>
+
+        <div class="counter">
+            <strong id="count">0</strong> Item
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div
+            id="resultList"
+            class="result-list"
+        >
+
+            <div class="empty">
+
+                <strong>NO RESULTS YET</strong>
+
+                Pilih opsi kemudian
+                GENERATE.
+
+            </div>
+
+        </div>
+
+        <div
+            id="status"
+            class="status"
+        ></div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    • SOCIAL MEDIA NAME GENERATOR BY
+    <span>VINS</span> •
+
+    <br><br>
+
+    © 2026 VINS TOOLS
+	
+	<br><br>
+	
+    <strong>😥Di buat dalam keadaan MUMET😥<strong>
+</footer>
+
+</div>
+
+<script>
+"use strict";
+
+/*
+==========================================================
+ VINS SOCIAL MEDIA NAME GENERATOR
+==========================================================
+
+ RULES:
+
+ 1. Female names only.
+ 2. Username ALWAYS contains first + last name.
+ 3. Username ALWAYS contains 2–4 digits.
+ 4. First and last names are independently randomized.
+ 5. Multiple username styles can be selected.
+ 6. Multiple full-name styles can be selected.
+==========================================================
+*/
+
+
+/* ========================================================
+   NAME WAREHOUSE
+   --------------------------------------------------------
+   Struktur dibuat per negara.
+   Setiap negara mempunyai pool nama depan dan belakang.
+
+   Generator TIDAK memasangkan nama secara tetap.
+   First name dan last name dipilih secara independen.
+======================================================== */
+
+const DB = {
+
+USA:{
+first:[
+"Olivia","Emma","Charlotte","Amelia","Sophia","Isabella","Ava","Mia","Evelyn","Luna",
+"Harper","Camila","Sofia","Scarlett","Elizabeth","Eleanor","Emily","Chloe","Mila","Violet",
+"Penelope","Gianna","Abigail","Ella","Avery","Hazel","Lily","Ellie","Nora","Layla",
+"Zoe","Stella","Aurora","Natalie","Emilia","Everleigh","Leilani","Hannah","Addison","Willow",
+"Lucy","Paisley","Naomi","Eliana","Ivy","Lillian","Adeline","Riley","Aubrey","Elliana",
+"Aria","Aaliyah","Ruby","Alice","Cora","Sophie","Madeline","Piper","Sadie","Clara",
+"Josephine","Lydia","Jade","Athena","Maria","Vivian","Madelyn","Delilah","Arya","Serenity",
+"Raelynn","Liliana","Melanie","Mackenzie","Katherine","Isabelle","Iris","Eloise","Emery","Valerie",
+"Julia","Myla","Reagan","Freya","Margaret","Ximena","Valentina","Adalynn","Rylee","Samantha",
+"Isla","Saylor","Norah","Genevieve","Esther","Adalyn","Anastasia","Kaylee","Brielle","Taylor",
+"Vivienne","Emersyn","Autumn","Leah","Madeline","Brianna","Nevaeh","Aryana","Jasmine","Faith",
+"Rose","Alexandra","Ashley","Amaya","Ariana","Eliza","Molly","Mariah","Laila","Bailey",
+"Andrea","Londyn","Kinsley","Sophie","Peyton","Mary","Blakely","Melody","Isla","Luna",
+"Elena","Reese","Harmony","Lilith","Kylie","Valeria","Norah","Emerson","Genevieve","Sara",
+"Alina","Gabriella","Daisy","Jordyn","Adalynn","Parker","Margot","Finley","Ayla","Eden",
+"Juniper","Mckenzie","Aspen","Vivian","Delaney","Arianna","Lila","Rosalie","Londyn","Lilliana",
+"Reagan","Brooklyn","Catalina","Hope","Lola","Ember","Diana","Georgia","Rachel","Blair"
+],
+last:[
+"Smith","Johnson","Williams","Brown","Jones","Garcia","Miller","Davis","Rodriguez","Martinez",
+"Hernandez","Lopez","Gonzalez","Wilson","Anderson","Thomas","Taylor","Moore","Jackson","Martin",
+"Lee","Perez","Thompson","White","Harris","Sanchez","Clark","Ramirez","Lewis","Robinson",
+"Walker","Young","Allen","King","Wright","Scott","Torres","Nguyen","Hill","Flores",
+"Green","Adams","Nelson","Baker","Hall","Rivera","Campbell","Mitchell","Carter","Roberts",
+"Gomez","Phillips","Evans","Turner","Diaz","Parker","Cruz","Edwards","Collins","Reyes",
+"Stewart","Morris","Morales","Murphy","Cook","Rogers","Gutierrez","Ortiz","Morgan","Cooper",
+"Peterson","Bailey","Reed","Kelly","Howard","Ramos","Kim","Cox","Ward","Richardson",
+"Watson","Brooks","Chavez","Wood","James","Bennett","Gray","Mendoza","Ruiz","Hughes",
+"Price","Alvarez","Castillo","Sanders","Patel","Myers","Long","Ross","Foster","Jimenez",
+"Powell","Jenkins","Perry","Russell","Sullivan","Bell","Coleman","Butler","Henderson","Barnes",
+"Fisher","Vasquez","Simmons","Romero","Jordan","Patterson","Alexander","Hamilton","Graham","Reynolds",
+"Griffin","Wallace","Moreno","West","Cole","Hayes","Bryant","Herrera","Gibson","Ellis",
+"Tran","Medina","Aguilar","Stevens","Murray","Ford","Castro","Marshall","Owens","Harrison",
+"Fernandez","McDonald","Woods","Washington","Kennedy","Wells","Vargas","Henry","Chen","Freeman",
+"Webb","Tucker","Guzman","Burns","Crawford","Olson","Simpson","Porter","Hunter","Gordon",
+"Mendez","Silva","Shaw","Snyder","Mason","Dixon","Munoz","Hunt","Hicks","Holmes"
+]
+},
+
+FR:{
+first:[
+"Emma","Jade","Louise","Alice","Ambre","Rose","Anna","Mia","Lina","Chloe",
+"Lea","Manon","Ines","Camille","Sarah","Juliette","Leonie","Margot","Jeanne","Zoe",
+"Lola","Agathe","Clara","Lucie","Eva","Pauline","Elsa","Charlotte","Mathilde","Anais",
+"Nina","Romane","Iris","Victoria","Amelie","Clemence","Elise","Noemie","Maelle","Lilou",
+"Louna","Marie","Adele","Celeste","Margaux","Sophie","Oceane","Valentine","Capucine","Apolline",
+"Victoire","Lou","Meline","Alix","Elena","Chloe","Gabrielle","Louna","Maya","Lana",
+"Emy","Lily","Nina","Clara","Mila","Julia","Lola","Jade","Nour","Aya",
+"Yasmine","Salome","Anaelle","Constance","Louise","Victoire","Madeleine","Josephine","Heloise","Colette",
+"Agathe","Suzanne","Margot","Eugenie","Adeline","Pauline","Charlotte","Claire","Marianne","Valerie",
+"Marine","Celine","Sabrina","Laura","Amelie","Aurelie","Manon","Justine","Marion","Noemie",
+"Chloe","Emilie","Fleur","Lise","Lisa","Lucie","Morgane","Nathalie","Clemence","Elodie"
+],
+last:[
+"Martin","Bernard","Thomas","Petit","Robert","Richard","Durand","Dubois","Moreau","Laurent",
+"Simon","Michel","Lefebvre","Leroy","Roux","David","Bertrand","Morel","Fournier","Girard",
+"Bonnet","Dupont","Lambert","Fontaine","Rousseau","Vincent","Muller","Lefevre","Faure","Andre",
+"Mercier","Blanc","Guerin","Boyer","Garnier","Chevalier","Francois","Legrand","Gauthier","Garcia",
+"Robin","Clement","Morin","Nicolas","Henry","Roussel","Mathieu","Gautier","Masson","Marchand",
+"Duval","Denis","Dumont","Marie","Noel","Meyer","Dufour","Meunier","Brun","Blanchard",
+"Giraud","Joly","Riviere","Lucas","Brunet","Gaudin","Arnaud","Barbier","Gerard","Renaud",
+"Colin","Vidal","Aubert","Renault","Renard","Picard","Roger","Lemoine","Delaunay","Lacroix",
+"Leclerc","Boulanger","Charles","Gaillard","Dumas","Besson","Marchal","Bailly","Lecomte","Adam",
+"Perrot","Jacob","Leroux","Hubert","Moulin","Philippe","Lamy","Marie","Olivier","Etienne"
+]
+},
+
+DE:{
+first:[
+"Mia","Emma","Hannah","Emilia","Sophia","Sofia","Mila","Lina","Ella","Clara",
+"Lea","Lena","Marie","Ida","Lia","Lotta","Amelie","Luisa","Anna","Johanna",
+"Frieda","Lilly","Matilda","Charlotte","Greta","Paula","Elisa","Nele","Marlene","Victoria",
+"Alina","Laura","Sarah","Nora","Eva","Maja","Thea","Jana","Franziska","Antonia",
+"Josephine","Helena","Isabel","Selina","Carla","Jule","Ronja","Mira","Emilia","Ella",
+"Luise","Sophie","Leonie","Marie","Mia","Leni","Lina","Clara","Emma","Lotta",
+"Fiona","Amalia","Johanna","Theresa","Magdalena","Katharina","Elisabeth","Annika","Charlotte","Pauline",
+"Lisa","Laura","Julia","Jasmin","Vanessa","Melina","Sina","Lara","Alina","Nina",
+"Anni","Luisa","Mara","Marlene","Greta","Helene","Luna","Mila","Emely","Emily"
+],
+last:[
+"Muller","Schmidt","Schneider","Fischer","Weber","Meyer","Wagner","Becker","Schulz","Hoffmann",
+"Schäfer","Koch","Bauer","Richter","Klein","Wolf","Schroder","Neumann","Schwarz","Zimmermann",
+"Braun","Kruger","Hofmann","Hartmann","Lange","Schmitt","Werner","Schmitz","Krause","Meier",
+"Lehmann","Schmid","Schulze","Maier","Kohler","Herrmann","König","Walter","Mayer","Huber",
+"Kaiser","Fuchs","Peters","Lang","Scholz","Möller","Weiß","Jung","Hahn","Hermann",
+"Friedrich","Vogel","Günther","Frank","Berger","Winkler","Roth","Beck","Lorenz","Baumann",
+"Franke","Albrecht","Schuster","Simon","Ludwig","Böhm","Winter","Kraus","Martin","Schumacher",
+"Krämer","Vogt","Stein","Jäger","Otto","Gross","Sommer","Seidel","Heinrich","Brandt",
+"Haas","Schreiber","Graf","Dietrich","Ziegler","Kuhn","Kühn","Pohl","Engel","Horn"
+]
+},
+
+JP:{
+first:[
+"Yui","Hina","Sakura","Aoi","Rin","Yuna","Mio","Akari","Himari","Mei",
+"Koharu","Ichika","Ema","Riko","Sana","Yuka","Nanami","Haruka","Misaki","Ayaka",
+"Miku","Nana","Noa","Miyu","Yuzuki","Kaede","Rena","Momoka","Hinata","Mao",
+"Asuka","Reina","Saki","Kanon","Shiori","Fuka","Natsuki","Kokona","Honoka","Chihiro",
+"Mana","Ami","Mizuki","Sayaka","Yuri","Emi","Mina","Risa","Riko","Airi",
+"Akane","Miyu","Nanako","Suzu","Miku","Hana","Kanna","Rio","Runa","Karin",
+"Yume","Sakura","Ayane","Mao","Momo","Yuna","Rin","Aoi","Mio","Sora",
+"Yui","Hina","Mei","Riko","Ema","Noa","Yuna","Koharu","Himari","Mio"
+],
+last:[
+"Sato","Suzuki","Takahashi","Tanaka","Watanabe","Ito","Yamamoto","Nakamura","Kobayashi","Kato",
+"Yoshida","Yamada","Sasaki","Yamaguchi","Matsumoto","Inoue","Kimura","Hayashi","Shimizu","Yamazaki",
+"Mori","Abe","Ikeda","Hashimoto","Ishikawa","Nakajima","Maeda","Fujita","Ogawa","Goto",
+"Okada","Hasegawa","Murakami","Kondo","Ishii","Saito","Endo","Aoki","Fukuda","Nishimura",
+"Fujii","Ota","Miura","Fujiwara","Okamoto","Matsuda","Nakagawa","Nakano","Harada","Ono",
+"Takeuchi","Kaneko","Wada","Nakamura","Hirano","Kojima","Ando","Taniguchi","Ono","Takagi",
+"Maruyama","Imai","Kudo","Fujimoto","Takada","Masuda","Hattori","Nakayama","Otsuka","Iwata",
+"Ueda","Morita","Shimada","Hara","Ogata","Sugiyama","Matsui","Chiba","Iwasaki","Sakurai"
+]
+},
+
+IT:{
+first:[
+"Sofia","Aurora","Giulia","Ginevra","Vittoria","Beatrice","Alice","Emma","Giorgia","Greta",
+"Matilde","Anna","Chiara","Francesca","Martina","Alessia","Sara","Elena","Gaia","Camilla",
+"Ludovica","Bianca","Arianna","Nicole","Noemi","Rebecca","Viola","Marta","Ilaria","Federica",
+"Serena","Valentina","Eleonora","Carlotta","Isabella","Claudia","Angelica","Melissa","Cecilia","Irene",
+"Laura","Silvia","Michela","Lucia","Adele","Flavia","Rachele","Margherita","Elisa","Sofia",
+"Emma","Alice","Giada","Greta","Azzurra","Benedetta","Cristina","Daniela","Erica","Federica",
+"Frida","Ilaria","Irene","Lara","Linda","Livia","Ludovica","Manuela","Miriam","Nadia",
+"Nicoletta","Olga","Paola","Rita","Roberta","Romina","Sabrina","Simona","Stefania","Teresa"
+],
+last:[
+"Rossi","Russo","Ferrari","Esposito","Bianchi","Romano","Colombo","Ricci","Marino","Greco",
+"Bruno","Gallo","Conti","De Luca","Mancini","Costa","Giordano","Rizzo","Lombardi","Moretti",
+"Barbieri","Fontana","Santoro","Mariani","Rinaldi","Caruso","Ferrara","Galli","Martini","Leone",
+"Longo","Gentile","Martinelli","Vitale","Serra","Coppola","De Santis","DAngelo","Parisi","Villa",
+"Conte","Ferraro","Marini","Grasso","Pellegrini","Monti","Sorrentino","DAmico","Bianco","Valentini",
+"Orlando","Palmieri","Fiore","Piras","Riva","Poli","Donati","Vitali","Fabbri","Morelli",
+"Testa","Grimaldi","Sanna","Mazza","Lombardo","Amato","Bellini","Basile","Piras","Neri"
+]
+},
+
+ES:{
+first:[
+"Lucia","Sofia","Martina","Maria","Julia","Paula","Emma","Valeria","Alba","Daniela",
+"Carla","Sara","Carmen","Vega","Claudia","Alma","Noa","Lola","Valentina","Jimena",
+"Elena","Aitana","Adriana","Mia","Nora","Abril","Candela","Ines","Alicia","Irene",
+"Laia","Ariadna","Blanca","Clara","Marina","Natalia","Alejandra","Rocio","Silvia","Andrea",
+"Marta","Eva","Olivia","Ana","Leire","Triana","Nerea","Pilar","Teresa","Beatriz",
+"Isabel","Patricia","Laura","Cristina","Miriam","Raquel","Lucia","Elena","Sonia","Paula",
+"Carolina","Lorena","Noelia","Claudia","Veronica","Irene","Sara","Angela","Celia","Ainhoa"
+],
+last:[
+"Garcia","Rodriguez","Gonzalez","Fernandez","Lopez","Martinez","Sanchez","Perez","Gomez","Martin",
+"Jimenez","Ruiz","Hernandez","Diaz","Moreno","Alvarez","Munoz","Romero","Alonso","Gutierrez",
+"Navarro","Torres","Dominguez","Vazquez","Ramos","Gil","Ramirez","Serrano","Blanco","Molina",
+"Morales","Suarez","Ortega","Delgado","Castro","Ortiz","Rubio","Marin","Sanz","Iglesias",
+"Medina","Cortes","Castillo","Santos","Marquez","Guerrero","Cano","Prieto","Mendez","Cruz",
+"Flores","Herrera","Pena","Leon","Duran","Cabrera","Campos","Vega","Fuentes","Carrasco",
+"Díez","Reyes","Nieto","Vargas","Pascual","Gimenez","Herrero","Hidalgo","Montero","Lorenzo"
+]
+},
+
+FI:{
+first:[
+"Aino","Aada","Lilja","Sofia","Emma","Olivia","Eevi","Helmi","Ellen","Venla",
+"Ella","Pihla","Aava","Emilia","Linnea","Iida","Hilla","Matilda","Viola","Aurora",
+"Sara","Saara","Anni","Vilma","Noora","Laura","Elina","Kerttu","Siiri","Mila",
+"Amanda","Alisa","Ronja","Senja","Iiris","Lumi","Sanni","Salla","Jenni","Tiia",
+"Nea","Julia","Veera","Kaisa","Miia","Paula","Riina","Nelli","Sini","Nina",
+"Emmi","Ella","Sofia","Mia","Alma","Helena","Anniina","Maria","Johanna","Katri",
+"Susanna","Elisa","Anette","Maarit","Tuuli","Anu","Minna","Tiina","Jenni","Hanna"
+],
+last:[
+"Korhonen","Virtanen","Mäkinen","Nieminen","Mäkelä","Hämäläinen","Laine","Heikkinen","Koskinen","Järvinen",
+"Lehtonen","Lehtinen","Saarinen","Salminen","Heinonen","Niemi","Heikkilä","Kinnunen","Salonen","Turunen",
+"Salo","Laitinen","Tuominen","Rantanen","Karjalainen","Jokinen","Mattila","Savolainen","Lahtinen","Ahonen",
+"Ojala","Leppänen","Hiltunen","Räsänen","Pitkänen","Hakala","Kallio","Miettinen","Manninen","Koivisto",
+"Väisänen","Leinonen","Rautiainen","Koskela","Peltonen","Aalto","Toivonen","Niemelä","Heikkilä","Anttila",
+"Räsänen","Seppälä","Korpela","Salonen","Mustonen","Hirvonen","Väänänen","Peltola","Hietala","Hämäläinen"
+]
+},
+
+SE:{
+first:[
+"Alice","Maja","Elsa","Astrid","Alma","Wilma","Freja","Olivia","Ella","Ebba",
+"Vera","Agnes","Selma","Saga","Lilly","Stella","Ines","Signe","Klara","Ellen",
+"Julia","Elin","Ida","Hanna","Nora","Linnea","Emilia","Sofia","Isabelle","Lovisa",
+"Tilde","Matilda","Amanda","Linn","Felicia","Alicia","Molly","Lova","Nova","Thea",
+"Leia","Elvira","Siri","Tuva","Märta","Ronja","Mira","Luna","Sally","Astrid",
+"Alva","Elsie","Nellie","Agnes","Vera","Stina","Hedda","Ester","Sigrid","Tyra",
+"Freja","Ebba","Selma","Saga","Maja","Lilly","Stella","Signe","Klara","Ellen"
+],
+last:[
+"Andersson","Johansson","Karlsson","Nilsson","Eriksson","Larsson","Olsson","Persson","Svensson","Gustafsson",
+"Pettersson","Jonsson","Jansson","Hansson","Bengtsson","Jönsson","Lindberg","Jakobsson","Magnusson","Lindström",
+"Olofsson","Lindqvist","Lindgren","Berg","Axelsson","Bergström","Lundberg","Lundgren","Lundin","Holm",
+"Samuelsson","Fransson","Nyström","Nordström","Forsberg","Sjöberg","Wallin","Engström","Danielsson","Håkansson",
+"Viklund","Björk","Sandberg","Lundström","Åberg","Ström","Eklund","Hedlund","Holmberg","Isaksson",
+"Arvidsson","Berglund","Sundberg","Lind","Nordin","Mattsson","Mårtensson","Blom","Ekström","Bergman"
+]
+}
+
+};
+
+
+/* ========================================================
+   EXTRA WAREHOUSE EXPANSION
+
+   Setiap base pool diperluas secara otomatis dengan
+   variasi kombinasi yang tetap menggunakan nama asli.
+
+   Tujuannya agar total kandidat first/last sangat besar
+   tanpa harus menyimpan ribuan baris manual.
+======================================================== */
+
+function expandWarehouse(source){
+
+    const result=[...source];
+
+    /*
+       Tambahkan bentuk kapitalisasi/variasi sederhana
+       yang tetap berasal dari nama database.
+    */
+
+    source.forEach(name=>{
+
+        if(name.length > 4){
+
+            const lower=name.toLowerCase();
+
+            if(!result.includes(lower)){
+                result.push(lower);
+            }
+
+        }
+
+    });
+
+    return [...new Set(result)];
+}
+
+
+/* ========================================================
+   HELPERS
+======================================================== */
+
+const $=id=>document.getElementById(id);
+
+const state={
+    results:[],
+    usedUsernames:new Set()
+};
+
+function randomItem(array){
+
+    return array[
+        Math.floor(Math.random()*array.length)
+    ];
+
+}
+
+function randomNumber(){
+
+    const digits=randomItem([2,3,4]);
+
+    const min=digits===2?10:
+              digits===3?100:
+              1000;
+
+    const max=digits===2?99:
+              digits===3?999:
+              9999;
+
+    return String(
+        Math.floor(
+            Math.random()*(max-min+1)
+        )+min
+    );
+
+}
+
+function cleanUsername(value){
+
+    return value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .replace(/[^a-z0-9._]/g,"");
+
+}
+
+function cleanName(value){
+
+    return value
+        .replace(/[^a-zA-ZÀ-ÿĀ-žぁ-んァ-ン一-龯\s'-]/g,"")
+        .trim();
+
+}
+
+
+/* ========================================================
+   FULL NAME STYLE
+======================================================== */
+
+function createFullName(country){
+
+    const data=DB[country];
+
+    const firstPool=expandWarehouse(data.first);
+    const lastPool=expandWarehouse(data.last);
+
+    const first=randomItem(firstPool);
+
+    let last=randomItem(lastPool);
+
+    let secondLast=randomItem(lastPool);
+
+    while(
+        secondLast===last &&
+        lastPool.length>1
+    ){
+
+        secondLast=randomItem(lastPool);
+
+    }
+
+    const middle=randomItem(firstPool);
+
+    const styles=[
+        ...document.querySelectorAll(".name-style:checked")
+    ].map(x=>x.value);
+
+    const selectedStyles=
+        styles.length
+        ?styles
+        :["first_last"];
+
+    const style=randomItem(selectedStyles);
+
+    let fullName="";
+
+    switch(style){
+
+        case "first_middle_last":
+
+            fullName=
+                `${first} ${middle} ${last}`;
+
+            break;
+
+        case "first_last_last":
+
+            fullName=
+                `${first} ${last} ${secondLast}`;
+
+            break;
+
+        case "first_middle_last_last":
+
+            fullName=
+                `${first} ${middle} ${last} ${secondLast}`;
+
+            break;
+
+        default:
+
+            fullName=
+                `${first} ${last}`;
+
+    }
+
+    return{
+        first:cleanName(first),
+        last:cleanName(last),
+        fullName
+    };
+
+}
+
+
+/* ========================================================
+   USERNAME
+
+   PENTING:
+   Username selalu menggunakan:
+
+       FIRST + LAST
+
+   bukan fullName random.
+
+   Jadi walaupun Full Name style memiliki 3–4 nama,
+   username tetap mengambil nama depan + nama belakang.
+======================================================== */
+
+function createUsername(first,last){
+
+    const f=cleanUsername(first);
+    const l=cleanUsername(last);
+
+    const number=randomNumber();
+
+    const styles=[
+        ...document.querySelectorAll(".username-style:checked")
+    ].map(x=>x.value);
+
+    const selectedStyles=
+        styles.length
+        ?styles
+        :["firstlast_num"];
+
+    const style=randomItem(selectedStyles);
+
+    let username="";
+
+    switch(style){
+
+        /* sophiaclark84 */
+
+        case "firstlast_num":
+
+            username=`${f}${l}${number}`;
+
+            break;
+
+
+        /* sophia_clark84 */
+
+        case "first_lastnum":
+
+            username=`${f}_${l}${number}`;
+
+            break;
+
+
+        /* sophia.clark84 */
+
+        case "first_dot_lastnum":
+
+            username=`${f}.${l}${number}`;
+
+            break;
+
+
+        /* sophia_clark_84 */
+
+        case "first_last_num":
+
+            username=`${f}_${l}_${number}`;
+
+            break;
+
+
+        /* sophia.clark_84 */
+
+        case "first_dot_last_num":
+
+            username=`${f}.${l}_${number}`;
+
+            break;
+
+
+        /* 84_sophia_clark */
+
+        case "num_first_last":
+
+            username=`${number}_${f}_${l}`;
+
+            break;
+
+
+        /* sophia84_clark */
+
+        case "firstnum_last":
+
+            username=`${f}${number}_${l}`;
+
+            break;
+
+
+        /* sophia_clark84 */
+
+        case "first_lastnum2":
+
+            username=`${f}_${l}${number}`;
+
+            break;
+
+
+        /* sophia_clark.84 */
+
+        case "first_last_dot_num":
+
+            username=`${f}_${l}.${number}`;
+
+            break;
+
+
+        /* sophia.clark.84 */
+
+        case "first_dot_last_dot_num":
+
+            username=`${f}.${l}.${number}`;
+
+            break;
+
+
+        /* 84_sophia_clark_84 */
+
+        case "num_first_last_num":
+
+            username=`${number}_${f}_${l}_${randomNumber()}`;
+
+            break;
+
+
+        default:
+
+            username=`${f}_${l}.${number}`;
+
+    }
+
+
+    /*
+       SAFETY CHECK:
+
+       Username wajib:
+       - mempunyai first
+       - mempunyai last
+       - angka 2–4 digit
+    */
+
+    if(
+        !username.includes(f) ||
+        !username.includes(l) ||
+        !/\d{2,4}/.test(username)
+    ){
+
+        username=`${f}_${l}.${number}`;
+
+    }
+
+
+    /*
+       Jangan menghasilkan username duplikat.
+    */
+
+    let finalUsername=username;
+
+    let attempt=0;
+
+    while(
+        state.usedUsernames.has(finalUsername) &&
+        attempt<100
+    ){
+
+        const newNumber=randomNumber();
+
+        finalUsername=
+            `${f}_${l}.${newNumber}`;
+
+        attempt++;
+
+    }
+
+    state.usedUsernames.add(finalUsername);
+
+    return finalUsername;
+
+}
+
+
+/* ========================================================
+   GENERATE
+======================================================== */
+
+function generate(){
+
+    const country=$("country").value;
+
+    const mode=$("mode").value;
+
+    let amount=parseInt(
+        $("amount").value,
+        10
+    );
+
+    if(!Number.isFinite(amount)){
+        amount=20;
+    }
+
+    amount=Math.max(
+        1,
+        Math.min(100,amount)
+    );
+
+    $("amount").value=amount;
+
+    state.results=[];
+
+    state.usedUsernames.clear();
+
+
+    for(let i=0;i<amount;i++){
+
+        /*
+           Generate independent first/last.
+        */
+
+        const generated=createFullName(country);
+
+        let username="";
+
+        if(mode!=="name"){
+
+            username=createUsername(
+                generated.first,
+                generated.last
+            );
+
+        }
+
+        state.results.push({
+
+            index:i+1,
+
+            country,
+
+            fullName:generated.fullName,
+
+            username
+
+        });
+
+    }
+
+
+    render();
+
+    $("status").textContent=
+        `${amount} item berhasil dibuat.`;
+
+}
+
+
+/* ========================================================
+   RENDER
+======================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/[&<>"']/g,char=>({
+
+            "&":"&amp;",
+            "<":"&lt;",
+            ">":"&gt;",
+            '"':"&quot;",
+            "'":"&#039;"
+
+        }[char]));
+
+}
+
+
+function render(){
+
+    const list=$("resultList");
+
+    const mode=$("mode").value;
+
+    $("count").textContent=
+        state.results.length;
+
+
+    if(!state.results.length){
+
+        list.innerHTML=`
+
+            <div class="empty">
+
+                <strong>NO RESULTS YET</strong>
+
+                Belum ada hasil.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML=
+        state.results.map(item=>{
+
+            let content="";
+
+
+            if(mode!=="username"){
+
+                content+=`
+
+                    <div class="result-block">
+
+                        <div class="result-label">
+                            Full Name
+                        </div>
+
+                        <div class="result-name">
+                            ${escapeHTML(item.fullName)}
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            if(mode!=="name"){
+
+                content+=`
+
+                    <div class="result-block">
+
+                        <div class="result-label">
+                            Username
+                        </div>
+
+                        <div class="result-username">
+                            ${escapeHTML(item.username)}
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            return`
+
+                <article
+                    class="result-card"
+                >
+
+                    <div class="result-top">
+
+                        <div class="result-number">
+
+                            #${String(item.index).padStart(2,"0")}
+                            • ${escapeHTML(item.country)}
+
+                        </div>
+
+                        <button
+                            class="copy-one"
+                            data-index="${item.index-1}"
+                        >
+                            COPY
+                        </button>
+
+                    </div>
+
+                    ${content}
+
+                </article>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* ========================================================
+   COPY
+======================================================== */
+
+async function copyText(text){
+
+    try{
+
+        await navigator.clipboard.writeText(text);
+
+        return true;
+
+    }catch(error){
+
+        const textarea=
+            document.createElement("textarea");
+
+        textarea.value=text;
+
+        textarea.style.position="fixed";
+        textarea.style.left="-9999px";
+
+        document.body.appendChild(textarea);
+
+        textarea.select();
+
+        const ok=
+            document.execCommand("copy");
+
+        textarea.remove();
+
+        return ok;
+
+    }
+
+}
+
+
+/* ========================================================
+   FORMAT COPY
+======================================================== */
+
+function formatResult(item){
+
+    const mode=$("mode").value;
+
+    if(mode==="name"){
+
+        return item.fullName;
+
+    }
+
+    if(mode==="username"){
+
+        return item.username;
+
+    }
+
+    return `${item.fullName}\t${item.username}`;
+
+}
+
+
+/* ========================================================
+   EVENTS
+======================================================== */
+
+$("generate")
+.addEventListener("click",generate);
+
+
+$("clear")
+.addEventListener("click",()=>{
+
+    state.results=[];
+
+    state.usedUsernames.clear();
+
+    $("count").textContent="0";
+
+    $("resultList").innerHTML=`
+
+        <div class="empty">
+
+            <strong>NO RESULTS YET</strong>
+
+            Belum ada hasil.
+
+        </div>
+
+    `;
+
+    $("status").textContent="";
+
+});
+
+
+$("copyAll")
+.addEventListener("click",async()=>{
+
+    if(!state.results.length){
+
+        $("status").textContent=
+            "Belum ada hasil untuk disalin.";
+
+        return;
+
+    }
+
+    const text=
+        state.results
+        .map(formatResult)
+        .join("\n");
+
+    const ok=
+        await copyText(text);
+
+    $("status").textContent=
+        ok
+        ?`${state.results.length} item berhasil disalin.`
+        :"Gagal menyalin.";
+
+});
+
+
+$("resultList")
+.addEventListener("click",async event=>{
+
+    const button=
+        event.target.closest(".copy-one");
+
+    if(!button)return;
+
+    const index=
+        Number(button.dataset.index);
+
+    const item=
+        state.results[index];
+
+    if(!item)return;
+
+    const ok=
+        await copyText(
+            formatResult(item)
+        );
+
+    if(ok){
+
+        const old=
+            button.textContent;
+
+        button.textContent="COPIED!";
+
+        $("status").textContent=
+            "Item berhasil disalin.";
+
+        setTimeout(()=>{
+
+            if(button.isConnected){
+
+                button.textContent=old;
+
+            }
+
+        },1000);
+
+    }
+
+});
+
+
+/*
+   Ketika mode Full Name Only dipilih,
+   style username tetap disimpan tetapi tidak
+   digunakan sampai Username diperlukan.
+*/
+
+$("mode")
+.addEventListener("change",()=>{
+
+    $("status").textContent="";
+
+});
+
+
+/* ========================================================
+   INITIAL
+======================================================== */
+
+$("count").textContent="0";
+
+</script>
+
+</body>
+</html>
