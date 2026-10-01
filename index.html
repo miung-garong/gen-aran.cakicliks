@@ -84,9 +84,22 @@ header{
 
 .description{
     margin-top:10px;
-    color:#555;
     font-size:13px;
 	font-weight:700;
+    color: #ff0000;
+    animation: warning 1s infinite;
+}
+
+@keyframes warning {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 5px #ff0000;
+    }
+
+    50% {
+        opacity: 0.2;
+        text-shadow: none;
+    }
 }
 
 /* ================= PANEL ================= */
@@ -445,7 +458,7 @@ footer span{
 <div class="container">
 
 <header>
-    <div class="logo">MAS ICLIK<span>.</span></div>
+    <div class="logo">CAK ICLIX<span>.</span></div>
     <div class="subtitle">SOCIAL MEDIA NAME GENERATOR</div>
     <div class="description">
         OJOK MALES GARAP
@@ -1776,6 +1789,40 @@ $("mode")
 $("count").textContent="0";
 
 </script>
+<script>
+document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+});
 
+document.addEventListener("keydown", function (e) {
+    // Ctrl+U
+    if (e.ctrlKey && e.key.toLowerCase() === "u") {
+        e.preventDefault();
+        return false;
+    }
+
+    // F12
+    if (e.key === "F12") {
+        e.preventDefault();
+        return false;
+    }
+
+    // Ctrl+Shift+I / Ctrl+Shift+J
+    if (
+        e.ctrlKey &&
+        e.shiftKey &&
+        ["i", "j"].includes(e.key.toLowerCase())
+    ) {
+        e.preventDefault();
+        return false;
+    }
+
+    // Ctrl+Shift+C
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "c") {
+        e.preventDefault();
+        return false;
+    }
+});
+</script>
 </body>
 </html>
