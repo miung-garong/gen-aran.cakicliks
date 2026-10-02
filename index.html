@@ -451,6 +451,107 @@ footer span{
     }
 }
 </style>
+	<style>
+
+    /* CSS LAMA KAMU */
+    
+    body {
+        background: #000;
+    }
+
+    .container {
+        max-width: 1100px;
+    }
+
+
+    /* =========================
+       MULTI SELECT DROPDOWN
+       ========================= */
+
+    .multi-select {
+        position: relative;
+        width: 100%;
+    }
+
+    .multi-select-btn {
+        width: 100%;
+        height: 38px;
+        padding: 0 12px;
+        background: #080808;
+        border: 1px solid #333;
+        border-radius: 5px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 11px;
+        text-align: left;
+    }
+
+    .multi-select-btn:hover,
+    .multi-select.open .multi-select-btn {
+        border-color: #ff0000;
+    }
+
+    .multi-select-btn .arrow {
+        color: #ff0000;
+        font-size: 10px;
+        transition: transform .2s ease;
+    }
+
+    .multi-select.open .arrow {
+        transform: rotate(180deg);
+    }
+
+    .multi-select-menu {
+        position: absolute;
+        z-index: 999;
+        top: calc(100% + 4px);
+        left: 0;
+        width: 100%;
+        max-height: 220px;
+        overflow-y: auto;
+        background: #080808;
+        border: 1px solid #ff0000;
+        border-radius: 5px;
+        padding: 5px;
+        display: none;
+        box-shadow: 0 8px 25px rgba(0,0,0,.7);
+    }
+
+    .multi-select.open .multi-select-menu {
+        display: block;
+    }
+
+    .multi-select-menu label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 8px;
+        color: #fff;
+        font-size: 10px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .multi-select-menu label:hover {
+        background: #1a0000;
+    }
+
+    .multi-select-menu input[type="checkbox"] {
+        width: 13px;
+        height: 13px;
+        accent-color: #ff0000;
+        cursor: pointer;
+    }
+
+    .multi-select-menu span {
+        user-select: none;
+    }
+
+</style>
 </head>
 
 <body>
@@ -522,170 +623,103 @@ footer span{
 
         <!-- NAME STYLE -->
 
-        <div class="field">
+       <div class="field">
+    <label>FULL NAME STYLE <span>(MULTI SELECT)</span></label>
 
+    <div class="multi-select" id="fullNameDropdown">
+        <button type="button" class="multi-select-btn">
+            <span class="selected-text">First Last</span>
+            <span class="arrow">▼</span>
+        </button>
+
+        <div class="multi-select-menu">
             <label>
-                FULL NAME STYLE
-                <span style="color:#666">(MULTI SELECT)</span>
+                <input type="checkbox" value="first_last" checked>
+                <span>First Last</span>
             </label>
 
-            <div class="style-box">
+            <label>
+                <input type="checkbox" value="first_middle_last">
+                <span>First Middle Last</span>
+            </label>
 
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="name-style"
-                        value="first_last"
-                        checked
-                    >
-                    <code>First Last</code>
-                </label>
+            <label>
+                <input type="checkbox" value="first_last_last">
+                <span>First Last Last</span>
+            </label>
 
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="name-style"
-                        value="first_middle_last"
-                    >
-                    <code>First Middle Last</code>
-                </label>
-
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="name-style"
-                        value="first_last_last"
-                    >
-                    <code>First Last Last</code>
-                </label>
-
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="name-style"
-                        value="first_middle_last_last"
-                    >
-                    <code>First Middle Last Last</code>
-                </label>
-
-            </div>
-
+            <label>
+                <input type="checkbox" value="first_middle_last_last">
+                <span>First Middle Last Last</span>
+            </label>
         </div>
+    </div>
+</div>
 
         <!-- USERNAME STYLE -->
 
         <div class="field">
+    <label>USERNAME STYLE <span>(MULTI SELECT)</span></label>
 
+    <div class="multi-select" id="usernameDropdown">
+        <button type="button" class="multi-select-btn">
+            <span class="selected-text">namadepan namabelakang + angka</span>
+            <span class="arrow">▼</span>
+        </button>
+
+        <div class="multi-select-menu">
             <label>
-                USERNAME STYLE
-                <span style="color:#666">(MULTI SELECT)</span>
+                <input type="checkbox" value="namadepan_namabelakang_angka" checked>
+                <span>namadepan namabelakang + angka</span>
             </label>
 
-            <div class="style-box">
+            <label>
+                <input type="checkbox" value="nama_namaangka">
+                <span>nama_namaangka</span>
+            </label>
 
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="firstlast_num"
-                        checked
-                    >
-                    <code>namadepan namabelakang + angka</code>
-                </label>
+            <label>
+                <input type="checkbox" value="nama.namaangka">
+                <span>nama.namaangka</span>
+            </label>
 
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="first_lastnum"
-                    >
-                    <code>nama_namaangka</code>
-                </label>
+            <label>
+                <input type="checkbox" value="nama_nama_angka">
+                <span>nama_nama_angka</span>
+            </label>
 
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="first_dot_lastnum"
-                    >
-                    <code>nama.namaangka</code>
-                </label>
+            <label>
+                <input type="checkbox" value="nama.nama_angka">
+                <span>nama.nama_angka</span>
+            </label>
 
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="first_last_num"
-                    >
-                    <code>nama_nama_angka</code>
-                </label>
+            <label>
+                <input type="checkbox" value="angka_nama_nama">
+                <span>angka_nama_nama</span>
+            </label>
 
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="first_dot_last_num"
-                    >
-                    <code>nama.nama_angka</code>
-                </label>
+            <label>
+                <input type="checkbox" value="namaangka_nama">
+                <span>namaangka_nama</span>
+            </label>
 
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="num_first_last"
-                    >
-                    <code>angka_nama_nama</code>
-                </label>
+            <label>
+                <input type="checkbox" value="nama_nama.angka">
+                <span>nama_nama.angka</span>
+            </label>
 
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="firstnum_last"
-                    >
-                    <code>namaangka_nama</code>
-                </label>
+            <label>
+                <input type="checkbox" value="nama.nama.angka">
+                <span>nama.nama.angka</span>
+            </label>
 
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="first_lastnum2"
-                    >
-                    <code>nama_namaangka</code>
-                </label>
-
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="first_last_dot_num"
-                    >
-                    <code>nama_nama.angka</code>
-                </label>
-
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="first_dot_last_dot_num"
-                    >
-                    <code>nama.nama.angka</code>
-                </label>
-
-                <label class="style-option">
-                    <input
-                        type="checkbox"
-                        class="username-style"
-                        value="num_first_last_num"
-                    >
-                    <code>angka_nama_nama_angka</code>
-                </label>
-
-            </div>
-
+            <label>
+                <input type="checkbox" value="angka_nama_nama_angka">
+                <span>angka_nama_nama_angka</span>
+            </label>
         </div>
+    </div>
+</div>
 
         <!-- AMOUNT -->
 
@@ -1822,6 +1856,51 @@ document.addEventListener("keydown", function (e) {
         e.preventDefault();
         return false;
     }
+});
+</script>
+		<script>
+document.querySelectorAll(".multi-select").forEach(dropdown => {
+
+    const button = dropdown.querySelector(".multi-select-btn");
+    const text = dropdown.querySelector(".selected-text");
+    const checkboxes = dropdown.querySelectorAll(
+        'input[type="checkbox"]'
+    );
+
+    button.addEventListener("click", function(e) {
+        e.stopPropagation();
+
+        document.querySelectorAll(".multi-select").forEach(other => {
+            if (other !== dropdown) {
+                other.classList.remove("open");
+            }
+        });
+
+        dropdown.classList.toggle("open");
+    });
+
+    checkboxes.forEach(cb => {
+        cb.addEventListener("change", function() {
+
+            const selected = [...checkboxes]
+                .filter(x => x.checked)
+                .map(x => x.parentElement.querySelector("span").textContent.trim());
+
+            if (selected.length === 0) {
+                text.textContent = "Pilih style...";
+            } else if (selected.length === 1) {
+                text.textContent = selected[0];
+            } else {
+                text.textContent =
+                    selected[0] + " +" + (selected.length - 1) + " lainnya";
+            }
+        });
+    });
+});
+
+document.addEventListener("click", function() {
+    document.querySelectorAll(".multi-select")
+        .forEach(dropdown => dropdown.classList.remove("open"));
 });
 </script>
 </body>
