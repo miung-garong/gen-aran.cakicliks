@@ -694,6 +694,11 @@ footer span{
         </button>
 
         <div class="multi-select-menu">
+			<label>
+                <input type="checkbox" value="random_mix" id="usernameRandomMix">
+                <span>Random Mix</span>
+            </label>
+
             <label>
                 <input type="checkbox" value="namadepan_namabelakang_angka" checked>
                 <span>namadepan namabelakang + angka</span>
@@ -1928,6 +1933,36 @@ document.addEventListener("click", function() {
     document.querySelectorAll(".multi-select")
         .forEach(dropdown => dropdown.classList.remove("open"));
 });
+			const randomMix = document.getElementById("usernameRandomMix");
+
+const usernameCheckboxes = document.querySelectorAll(
+    '#usernameDropdown input[type="checkbox"]:not(#usernameRandomMix)'
+);
+
+if (randomMix) {
+    randomMix.addEventListener("change", function () {
+
+        if (this.checked) {
+
+            usernameCheckboxes.forEach(cb => {
+                cb.checked = false;
+                cb.disabled = true;
+            });
+
+        } else {
+
+            usernameCheckboxes.forEach(cb => {
+                cb.disabled = false;
+            });
+
+            if (![...usernameCheckboxes].some(cb => cb.checked)) {
+                usernameCheckboxes[0].checked = true;
+            }
+
+        }
+
+    });
+}
 </script>
 </body>
 </html>
