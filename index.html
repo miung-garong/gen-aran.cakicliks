@@ -1282,139 +1282,193 @@ function createFullName(country){
 
 function createUsername(first,last){
 
-    const f=cleanUsername(first);
-    const l=cleanUsername(last);
+    const f = cleanUsername(first);
+    const l = cleanUsername(last);
 
-    const number=randomNumber();
+    const number = randomNumber();
 
-    const styles=[
-        ...document.querySelectorAll(".username-style:checked")
-    ].map(x=>x.value);
+    /*
+       Ambil style langsung dari dropdown USERNAME STYLE
+    */
 
-    const selectedStyles=
-        styles.length
-        ?styles
-        :["firstlast_num"];
+    const selectedStyles = [
+        ...document.querySelectorAll(
+            '#usernameDropdown input[type="checkbox"]:checked'
+        )
+    ].map(x => x.value);
 
-    const style=randomItem(selectedStyles);
 
-    let username="";
+    /*
+       Semua style username
+    */
+
+    const allStyles = [
+        "namadepan_namabelakang_angka",
+        "nama_namaangka",
+        "nama.namaangka",
+        "nama_nama_angka",
+        "nama.nama_angka",
+        "angka_nama_nama",
+        "namaangka_nama",
+        "nama_nama.angka",
+        "nama.nama.angka",
+        "angka_nama_nama_angka"
+    ];
+
+
+    /*
+       RANDOM MIX
+       Jika Random Mix dipilih,
+       ambil satu style secara acak.
+    */
+
+    let style;
+
+    if(selectedStyles.includes("random_mix")){
+
+        style = randomItem(allStyles);
+
+    }else{
+
+        style =
+            selectedStyles.length
+            ? randomItem(selectedStyles)
+            : "namadepan_namabelakang_angka";
+
+    }
+
+
+    let username = "";
+
 
     switch(style){
 
-        /* sophiaclark84 */
+        /*
+           sophia + clark + 84
+           sophia_clark84
+        */
 
-        case "firstlast_num":
+        case "namadepan_namabelakang_angka":
 
-            username=`${f}${l}${number}`;
-
-            break;
-
-
-        /* sophia_clark84 */
-
-        case "first_lastnum":
-
-            username=`${f}_${l}${number}`;
+            username = `${f}${l}${number}`;
 
             break;
 
 
-        /* sophia.clark84 */
+        /*
+           sophia_clark84
+        */
 
-        case "first_dot_lastnum":
+        case "nama_namaangka":
 
-            username=`${f}.${l}${number}`;
-
-            break;
-
-
-        /* sophia_clark_84 */
-
-        case "first_last_num":
-
-            username=`${f}_${l}_${number}`;
+            username = `${f}_${l}${number}`;
 
             break;
 
 
-        /* sophia.clark_84 */
+        /*
+           sophia.clark84
+        */
 
-        case "first_dot_last_num":
+        case "nama.namaangka":
 
-            username=`${f}.${l}_${number}`;
-
-            break;
-
-
-        /* 84_sophia_clark */
-
-        case "num_first_last":
-
-            username=`${number}_${f}_${l}`;
+            username = `${f}.${l}${number}`;
 
             break;
 
 
-        /* sophia84_clark */
+        /*
+           sophia_clark_84
+        */
 
-        case "firstnum_last":
+        case "nama_nama_angka":
 
-            username=`${f}${number}_${l}`;
-
-            break;
-
-
-        /* sophia_clark84 */
-
-        case "first_lastnum2":
-
-            username=`${f}_${l}${number}`;
+            username = `${f}_${l}_${number}`;
 
             break;
 
 
-        /* sophia_clark.84 */
+        /*
+           sophia.clark_84
+        */
 
-        case "first_last_dot_num":
+        case "nama.nama_angka":
 
-            username=`${f}_${l}.${number}`;
-
-            break;
-
-
-        /* sophia.clark.84 */
-
-        case "first_dot_last_dot_num":
-
-            username=`${f}.${l}.${number}`;
+            username = `${f}.${l}_${number}`;
 
             break;
 
 
-        /* 84_sophia_clark_84 */
+        /*
+           84_sophia_clark
+        */
 
-        case "num_first_last_num":
+        case "angka_nama_nama":
 
-            username=`${number}_${f}_${l}_${randomNumber()}`;
+            username = `${number}_${f}_${l}`;
+
+            break;
+
+
+        /*
+           sophia84_clark
+        */
+
+        case "namaangka_nama":
+
+            username = `${f}${number}_${l}`;
+
+            break;
+
+
+        /*
+           sophia_clark.84
+        */
+
+        case "nama_nama.angka":
+
+            username = `${f}_${l}.${number}`;
+
+            break;
+
+
+        /*
+           sophia.clark.84
+        */
+
+        case "nama.nama.angka":
+
+            username = `${f}.${l}.${number}`;
+
+            break;
+
+
+        /*
+           84_sophia_clark_2026
+        */
+
+        case "angka_nama_nama_angka":
+
+            username =
+                `${number}_${f}_${l}_${randomNumber()}`;
 
             break;
 
 
         default:
 
-            username=`${f}_${l}.${number}`;
+            username = `${f}${l}${number}`;
 
     }
 
 
     /*
-       SAFETY CHECK:
+       SAFETY CHECK
 
        Username wajib:
        - mempunyai first
        - mempunyai last
-       - angka 2–4 digit
+       - mempunyai angka 2–4 digit
     */
 
     if(
@@ -1423,7 +1477,7 @@ function createUsername(first,last){
         !/\d{2,4}/.test(username)
     ){
 
-        username=`${f}_${l}.${number}`;
+        username = `${f}${l}${number}`;
 
     }
 
@@ -1432,30 +1486,74 @@ function createUsername(first,last){
        Jangan menghasilkan username duplikat.
     */
 
-    let finalUsername=username;
+    let finalUsername = username;
 
-    let attempt=0;
+    let attempt = 0;
 
     while(
         state.usedUsernames.has(finalUsername) &&
-        attempt<100
+        attempt < 100
     ){
 
-        const newNumber=randomNumber();
+        const newNumber = randomNumber();
 
-        finalUsername=
-            `${f}_${l}.${newNumber}`;
+        switch(style){
+
+            case "namadepan_namabelakang_angka":
+                finalUsername = `${f}${l}${newNumber}`;
+                break;
+
+            case "nama_namaangka":
+                finalUsername = `${f}_${l}${newNumber}`;
+                break;
+
+            case "nama.namaangka":
+                finalUsername = `${f}.${l}${newNumber}`;
+                break;
+
+            case "nama_nama_angka":
+                finalUsername = `${f}_${l}_${newNumber}`;
+                break;
+
+            case "nama.nama_angka":
+                finalUsername = `${f}.${l}_${newNumber}`;
+                break;
+
+            case "angka_nama_nama":
+                finalUsername = `${newNumber}_${f}_${l}`;
+                break;
+
+            case "namaangka_nama":
+                finalUsername = `${f}${newNumber}_${l}`;
+                break;
+
+            case "nama_nama.angka":
+                finalUsername = `${f}_${l}.${newNumber}`;
+                break;
+
+            case "nama.nama.angka":
+                finalUsername = `${f}.${l}.${newNumber}`;
+                break;
+
+            case "angka_nama_nama_angka":
+                finalUsername =
+                    `${newNumber}_${f}_${l}_${randomNumber()}`;
+                break;
+
+            default:
+                finalUsername = `${f}${l}${newNumber}`;
+        }
 
         attempt++;
 
     }
+
 
     state.usedUsernames.add(finalUsername);
 
     return finalUsername;
 
 }
-
 
 /* ========================================================
    GENERATE
